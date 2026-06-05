@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КазЖерГеодезия — Геодезические услуги в Казахстане</title>
+  <meta name="description" content="ТОО КазЖерГеодезия — топографическая съёмка, геология, аэросъёмка БПЛА, 3D сканирование. Алматы и весь Казахстан.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --g:#1e7a44;--gl:#e6f5ec;--b:#1560a0;--bl:#daeef8;
+      --o:#e85c1a;--dk:#07101e;--tx:#1a2636;--mt:#6b7280;
+      --bd:#e5e7eb;--bg:#f3f5f3;--w:#fff;
+      --f:'Inter',system-ui,sans-serif;--fh:'Montserrat',system-ui,sans-serif;
+    }
+    body{font-family:var(--f);color:var(--tx);background:var(--w);line-height:1.6;font-size:16px;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto} a{text-decoration:none;color:inherit}
+    .W{max-width:1140px;margin:0 auto;padding:0 24px}
+    h1,h2,h3{font-family:var(--fh);line-height:1.15;color:var(--dk)}
+    .lbl{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--o);margin-bottom:10px}
+    .ttl{font-size:clamp(1.85rem,3vw,2.65rem);margin-bottom:14px}
+    .sub{font-size:.98rem;color:var(--mt);max-width:520px;line-height:1.75}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font:600 .88rem/1 var(--f);cursor:pointer;transition:all .22s;border:2px solid transparent}
+    .bp{background:var(--o);color:var(--w)}.bp:hover{background:#c94e12;transform:translateY(-2px);box-shadow:0 6px 22px rgba(232,92,26,.32)}
+    .bg2{background:transparent;color:var(--w);border-color:rgba(255,255,255,.4)}.bg2:hover{background:rgba(255,255,255,.1)}
+    .bo{background:transparent;color:var(--g);border-color:var(--g)}.bo:hover{background:var(--g);color:var(--w)}
+
+    @keyframes up{from{opacity:0;transform:translateY(55px)}to{opacity:1;transform:none}}
+    @keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+    @keyframes rng{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}100%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+    @keyframes bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @keyframes shimIn{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0% 0 0)}}
+
+    .anim{opacity:0;transform:translateY(38px);transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1)}
+    .anim.L{transform:translateX(-38px)}.anim.R{transform:translateX(38px)}
+    .anim.on{opacity:1;transform:none}
+    [data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}[data-d="3"]{transition-delay:.24s}
+    [data-d="4"]{transition-delay:.32s}[data-d="5"]{transition-delay:.4s}[data-d="6"]{transition-delay:.48s}
+
+    /* NAV */
+    .nav{position:fixed;top:0;inset-inline:0;z-index:100;background:rgba(7,16,30,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
+    .nav.sh{box-shadow:0 3px 28px rgba(0,0,0,.5)}
+    .ni{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .lm{width:36px;height:36px;background:linear-gradient(135deg,var(--g),var(--b));border-radius:8px;display:flex;align-items:center;justify-content:center;transition:transform .3s}
+    .logo:hover .lm{transform:rotate(-6deg) scale(1.08)}
+    .ln{font-family:var(--fh);font-size:.88rem;font-weight:800;color:var(--w);display:block}
+    .ls{font-size:.6rem;color:rgba(255,255,255,.36);letter-spacing:.06em}
+    .nl{display:flex;align-items:center;gap:26px;list-style:none}
+    .nl a{color:rgba(255,255,255,.6);font-size:.84rem;font-weight:500;transition:color .2s;position:relative}
+    .nl a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:2px;background:var(--o);transform:scaleX(0);transition:transform .25s;transform-origin:left}
+    .nl a:hover{color:var(--w)}.nl a:hover::after{transform:scaleX(1)}
+    .ncta{background:var(--o);color:var(--w)!important;padding:7px 16px;border-radius:6px;transition:background .2s!important}.ncta:hover{background:#c94e12!important}.ncta::after{display:none!important}
+    .ntog{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .ntog span{display:block;width:22px;height:2px;background:var(--w);border-radius:2px;transition:all .28s}
+
+    /* TICKER */
+    .tick{background:var(--o);overflow:hidden;padding:10px 0;cursor:default}
+    .tt{display:flex;width:max-content;animation:tk 22s linear infinite}
+    .tt:hover{animation-play-state:paused}
+    .ti{white-space:nowrap;padding:0 28px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w);display:flex;align-items:center;gap:10px}
+    .td{width:4px;height:4px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:var(--dk);overflow:hidden}
+    .hbg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 12% 50%,rgba(30,122,68,.24),transparent),radial-gradient(ellipse 50% 55% at 88% 28%,rgba(21,96,160,.2),transparent)}
+    .hgr{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 47px,rgba(30,122,68,.07) 47px,rgba(30,122,68,.07) 48px),repeating-linear-gradient(90deg,transparent,transparent 47px,rgba(21,96,160,.05) 47px,rgba(21,96,160,.05) 48px)}
+    .hb1{position:absolute;width:560px;height:560px;background:rgba(30,122,68,.14);border-radius:50%;filter:blur(90px);top:-200px;right:-100px;animation:flt 10s ease-in-out infinite}
+    .hb2{position:absolute;width:400px;height:400px;background:rgba(21,96,160,.11);border-radius:50%;filter:blur(90px);bottom:-110px;left:60px;animation:flt 12s ease-in-out -5s infinite}
+    .hc{position:relative;z-index:2;padding:110px 0 78px}
+    .hbdg{display:inline-flex;align-items:center;gap:7px;background:rgba(232,92,26,.13);border:1px solid rgba(232,92,26,.3);color:#f5a265;font-size:.73rem;font-weight:600;padding:6px 13px;border-radius:100px;margin-bottom:22px;animation:up .65s ease both}
+    .ht{font-size:clamp(2.5rem,5.5vw,4.2rem);color:var(--w);margin-bottom:18px;font-weight:900;max-width:720px;animation:up .65s .13s ease both}
+    .ht em{color:#3dd476;font-style:normal;display:inline-block}
+    .hd{font-size:1.02rem;color:rgba(255,255,255,.57);max-width:475px;line-height:1.77;margin-bottom:34px;animation:up .65s .24s ease both}
+    .ha{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:52px;animation:up .65s .34s ease both}
+    .hst{display:flex;gap:36px;padding-top:32px;border-top:1px solid rgba(255,255,255,.09);flex-wrap:wrap;animation:up .65s .44s ease both}
+    .snum{font-family:var(--fh);font-size:2.2rem;font-weight:900;color:var(--w);display:block;line-height:1}
+    .slbl{font-size:.72rem;color:rgba(255,255,255,.4);display:block;margin-top:3px}
+
+    /* SERVICES */
+    .svc{padding:90px 0;background:var(--bg)}
+    .sh2{margin-bottom:50px}
+    .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .sc{background:var(--w);border:1px solid var(--bd);border-radius:16px;padding:27px;transition:all .32s;position:relative;overflow:hidden;cursor:default}
+    .sc::before{content:'';position:absolute;top:0;inset-inline:0;height:3px;background:linear-gradient(90deg,var(--g),var(--b));transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.22,1,.36,1)}
+    .sc:hover{box-shadow:0 12px 40px rgba(30,122,68,.14);transform:translateY(-5px);border-color:rgba(30,122,68,.2)}.sc:hover::before{transform:scaleX(1)}
+    .sic{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:transform .32s}
+    .sc:hover .sic{transform:scale(1.1) rotate(-4deg)}
+    .ig{background:var(--gl)}.ib{background:var(--bl)}.io{background:#fef0e8}
+    .snm{font-size:.96rem;font-weight:600;margin-bottom:7px;color:var(--dk)}
+    .sdc{font-size:.845rem;color:var(--mt);line-height:1.65}
+
+    /* ABOUT */
+    .about{padding:90px 0}
+    .ai{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .aw{position:relative}
+    .aimg{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;display:block;transition:transform .5s}
+    .aw:hover .aimg{transform:scale(1.01)}
+    .abg{position:absolute;bottom:-16px;right:-16px;background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:17px 21px;box-shadow:0 8px 30px rgba(0,0,0,.11)}
+    .abn{font-family:var(--fh);font-size:2.4rem;font-weight:900;color:var(--g);display:block;line-height:1}
+    .abl2{font-size:.7rem;color:var(--mt);display:block;margin-top:3px}
+    .at p{color:var(--mt);line-height:1.82;margin-bottom:12px;font-size:.94rem}
+    .alist{list-style:none;display:flex;flex-direction:column;gap:10px;margin:22px 0 30px}
+    .alist li{display:flex;align-items:center;gap:9px;font-size:.875rem;color:var(--tx)}
+    .dot{width:6px;height:6px;background:var(--g);border-radius:50%;flex-shrink:0}
+
+    /* WHY */
+    .why{padding:72px 0;background:linear-gradient(135deg,#0c3820 0%,#082e52 100%)}
+    .wg{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+    .wi{text-align:center;color:var(--w)}
+    .wic{width:66px;height:66px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;transition:all .3s}
+    .wi:hover .wic{background:rgba(255,255,255,.18);transform:scale(1.08)}
+    .wt{font-family:var(--fh);font-size:1.05rem;font-weight:700;margin-bottom:7px;color:var(--w)}
+    .wd{font-size:.845rem;color:rgba(255,255,255,.6);line-height:1.68}
+
+    /* GALLERY */
+    .gal{padding:90px 0;background:var(--bg)}
+    .gg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .gi{position:relative;overflow:hidden;border-radius:14px;background:#c0c8c0;cursor:pointer}
+    .gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.22,1,.36,1);aspect-ratio:4/3}
+    .gi.W2{grid-column:span 2}.gi.W2 img{aspect-ratio:16/7}
+    .gi:hover img{transform:scale(1.07)}
+    .gov{position:absolute;bottom:0;inset-inline:0;padding:18px;background:linear-gradient(to top,rgba(7,16,30,.78),transparent);color:var(--w);transform:translateY(100%);transition:transform .34s cubic-bezier(.22,1,.36,1)}
+    .gi:hover .gov{transform:none}
+    .gc{font-size:.82rem;font-weight:500}
+
+    /* MAP */
+    .map{padding:90px 0}
+    .mi2{display:grid;grid-template-columns:1fr 1.65fr;gap:56px;align-items:start}
+    .mt2 p{color:var(--mt);line-height:1.82;margin-bottom:12px;font-size:.94rem}
+    .mh{display:flex;align-items:center;gap:9px;padding:13px 16px;background:var(--gl);border-left:3px solid var(--g);border-radius:0 8px 8px 0;margin:18px 0 26px}
+    .mh span{font-size:.85rem;color:var(--g);font-weight:600}
+    .me{width:100%;height:360px;border-radius:18px;overflow:hidden;border:1px solid var(--bd);box-shadow:0 4px 24px rgba(0,0,0,.08)}
+    .me iframe{width:100%;height:100%;border:none}
+
+    /* CTA */
+    .cta{padding:90px 0;background:var(--dk)}
+    .ci2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+    .ci2 .ttl{color:var(--w)}.ci2 .sub{color:rgba(255,255,255,.48);max-width:390px}
+    .clnk{margin-top:26px;display:flex;flex-direction:column;gap:13px}
+    .cr{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.72);font-size:.95rem;font-weight:500}
+    .cr.sm{font-size:.87rem;font-weight:400}
+    .cico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s}
+    .cr:hover .cico{transform:scale(1.1)}
+    .cph{background:rgba(255,255,255,.09)}.cwp{background:rgba(37,211,102,.14)}
+    .cf{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;transition:border-color .3s}
+    .cf:focus-within{border-color:rgba(232,92,26,.35)}
+    .cf h3{color:var(--w);font-family:var(--fh);margin-bottom:22px;font-size:1.02rem}
+    .fg{margin-bottom:13px}
+    .fr2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{display:block;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.46);margin-bottom:4px;letter-spacing:.04em}
+    input,select,textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:10px 13px;font-family:var(--f);font-size:.86rem;color:var(--w);outline:none;transition:border-color .22s,background .22s}
+    input::placeholder,textarea::placeholder{color:rgba(255,255,255,.25)}
+    input:focus,select:focus,textarea:focus{border-color:rgba(232,92,26,.55);background:rgba(255,255,255,.1)}
+    textarea{min-height:86px;resize:vertical}
+    select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23ffffff50' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;background-color:rgba(255,255,255,.07);padding-right:36px;cursor:pointer}
+    select option{background:#07101e}
+
+    /* FOOTER */
+    .foot{background:#050d18;padding:52px 0 26px}
+    .fm{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:22px}
+    .fbr{font-family:var(--fh);font-size:.95rem;font-weight:800;color:var(--w);margin-bottom:8px}
+    .fdc{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.7;margin-bottom:16px}
+    .fcc{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.46);font-size:.8rem;margin-bottom:6px;transition:color .2s}
+    .fcc:hover{color:rgba(255,255,255,.75)}
+    .fhd{font-size:.67rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:14px}
+    .fl{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .fl a{color:rgba(255,255,255,.44);font-size:.8rem;transition:color .2s}.fl a:hover{color:var(--w)}
+    .fbt{display:flex;justify-content:space-between;align-items:center}
+    .fcp{font-size:.74rem;color:rgba(255,255,255,.2)}
+
+    /* WHATSAPP */
+    .wa{position:fixed;bottom:24px;right:24px;z-index:200;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.38);transition:transform .3s;animation:rng 2.2s ease-out infinite}
+    .wa:hover{transform:scale(1.12);animation-play-state:paused}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){.sg{grid-template-columns:repeat(2,1fr)}.gg{grid-template-columns:repeat(2,1fr)}.gi.W2{grid-column:span 1}.gi.W2 img{aspect-ratio:4/3}.ai{gap:42px}}
+    @media(max-width:768px){
+      .nl{display:none}.ntog{display:flex}
+      .nl.open{display:flex;flex-direction:column;position:absolute;top:64px;inset-inline:0;background:rgba(7,16,30,.98);padding:16px 22px;gap:13px}
+      .hst{gap:18px}.ai,.ci2,.mi2{grid-template-columns:1fr}.abg{right:0;bottom:-12px}
+      .sg,.wg,.gg,.fm{grid-template-columns:1fr}.fbt{flex-direction:column;gap:7px;text-align:center}.fr2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<a href="https://wa.me/77714000503" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<header class="nav" id="nav">
+  <div class="W">
+    <nav class="ni">
+      <a href="#" class="logo">
+        <div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+        <div><span class="ln">КазЖерГеодезия</span><span class="ls">ТОО · Геодезические услуги</span></div>
+      </a>
+      <ul class="nl" id="nl">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#map">Покрытие</a></li>
+        <li><a href="#contact" class="ncta">Оставить заявку</a></li>
+      </ul>
+      <button class="ntog" id="tog" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="hbg"></div><div class="hgr"></div><div class="hb1"></div><div class="hb2"></div>
+  <div class="W">
+    <div class="hc">
+      <div class="hbdg">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Алматы · Весь Казахстан
+      </div>
+      <h1 class="ht">Точные геодезические<br>данные для <em>вашего проекта</em></h1>
+      <p class="hd">Топографические съёмки, геология, аэрофотосъёмка БПЛА и 3D сканирование. Современное оборудование — точные результаты в сжатые сроки.</p>
+      <div class="ha">
+        <a href="#contact" class="btn bp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Оставить заявку
+        </a>
+        <a href="#services" class="btn bg2">Наши услуги</a>
+      </div>
+      <div class="hst" id="stats">
+        <div><span class="snum" data-count="10" data-sfx="+">10+</span><span class="slbl">лет на рынке</span></div>
+        <div><span class="snum" data-count="500" data-sfx="+">500+</span><span class="slbl">объектов сдано</span></div>
+        <div><span class="snum" data-count="17">17</span><span class="slbl">регионов Казахстана</span></div>
+        <div><span class="snum" data-count="100" data-sfx="%">100%</span><span class="slbl">точность данных</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tick" aria-hidden="true">
+  <div class="tt">
+    <span class="ti">Топографическая съёмка<span class="td"></span></span>
+    <span class="ti">Геологические изыскания<span class="td"></span></span>
+    <span class="ti">Аэросъёмка БПЛА<span class="td"></span></span>
+    <span class="ti">3D сканирование<span class="td"></span></span>
+    <span class="ti">Сопровождение строительства<span class="td"></span></span>
+    <span class="ti">КазЖерГеодезия<span class="td"></span></span>
+    <span class="ti">Топографическая съёмка<span class="td"></span></span>
+    <span class="ti">Геологические изыскания<span class="td"></span></span>
+    <span class="ti">Аэросъёмка БПЛА<span class="td"></span></span>
+    <span class="ti">3D сканирование<span class="td"></span></span>
+    <span class="ti">Сопровождение строительства<span class="td"></span></span>
+    <span class="ti">КазЖерГеодезия<span class="td"></span></span>
+  </div>
+</div>
+
+<section class="svc" id="services">
+  <div class="W">
+    <div class="sh2 anim"><span class="lbl">Что мы делаем</span><h2 class="ttl">Геодезические и изыскательские услуги</h2><p class="sub">Полный спектр инженерных изысканий — от топосъёмки до аэрофотосъёмки с БПЛА.</p></div>
+    <div class="sg">
+      <article class="sc anim" data-d="1">
+        <div class="sic ig"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></div>
+        <h3 class="snm">Топографическая съёмка</h3>
+        <p class="sdc">Высокоточная съёмка местности с созданием топографических планов масштабов 1:500–1:10000. Работы любой сложности.</p>
+      </article>
+      <article class="sc anim" data-d="2">
+        <div class="sic ib"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1560a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3 class="snm">Геологические изыскания</h3>
+        <p class="sdc">Инженерно-геологические изыскания, грунтовые исследования и гидрогеологические работы для проектирования фундаментов.</p>
+      </article>
+      <article class="sc anim" data-d="3">
+        <div class="sic io"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e85c1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-8 8 8v10M10 20v-6h4v6"/></svg></div>
+        <h3 class="snm">Сопровождение строительства</h3>
+        <p class="sdc">Геодезический контроль на всех этапах строительства: разбивочные работы, исполнительная съёмка, мониторинг деформаций.</p>
+      </article>
+      <article class="sc anim" data-d="4">
+        <div class="sic ib"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1560a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></div>
+        <h3 class="snm">Аэротопосъёмка</h3>
+        <p class="sdc">Аэрофотосъёмка с беспилотных аппаратов. Ортофотопланы и цифровые модели рельефа высокого разрешения.</p>
+      </article>
+      <article class="sc anim" data-d="5">
+        <div class="sic ig"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <h3 class="snm">3D сканирование</h3>
+        <p class="sdc">Наземное лазерное сканирование с созданием облаков точек и трёхмерных моделей. Точность до 1–2 мм.</p>
+      </article>
+      <article class="sc anim" data-d="6">
+        <div class="sic io"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e85c1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3 class="snm">Работы с БПЛА</h3>
+        <p class="sdc">Инспекция объектов, мониторинг объёмов, тепловизионная и мультиспектральная съёмка дронами.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="W">
+    <div class="ai">
+      <div class="aw anim L">
+        <img src="https://picsum.photos/seed/kazgeo-field/800/600" alt="Специалисты КазЖерГеодезии на геодезической съёмке" class="aimg" loading="lazy" width="800" height="600">
+        <div class="abg"><span class="abn">10+</span><span class="abl2">лет опыта</span></div>
+      </div>
+      <div class="at anim R">
+        <span class="lbl">О компании</span>
+        <h2 class="ttl">ТОО «КазЖерГеодезия»</h2>
+        <p>Казахстанская компания, специализирующаяся на инженерных изысканиях и геодезических работах. Работаем с застройщиками, проектными организациями, государственными структурами и частными заказчиками.</p>
+        <p>Наша команда — сертифицированные геодезисты с опытом на крупных инфраструктурных объектах по всему Казахстану.</p>
+        <ul class="alist">
+          <li><span class="dot"></span>Лицензия на геодезические и картографические работы</li>
+          <li><span class="dot"></span>Современное оборудование Leica, Trimble и DJI</li>
+          <li><span class="dot"></span>Собственный парк БПЛА — съёмка любых площадей</li>
+          <li><span class="dot"></span>Работаем во всех 17 регионах Казахстана</li>
+        </ul>
+        <a href="#contact" class="btn bo">Связаться с нами</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="W">
+    <div class="wg">
+      <div class="wi anim" data-d="1">
+        <div class="wic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3 class="wt">Быстрые сроки</h3>
+        <p class="wd">Оперативный выезд на объект. Чёткие сроки — прописываем в договоре и соблюдаем.</p>
+      </div>
+      <div class="wi anim" data-d="2">
+        <div class="wic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3 class="wt">Точные данные</h3>
+        <p class="wd">Работаем по государственным стандартам. Все материалы проходят внутренний контроль качества.</p>
+      </div>
+      <div class="wi anim" data-d="3">
+        <div class="wic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3 class="wt">Профессиональная команда</h3>
+        <p class="wd">Опытные инженеры с профильным образованием. Работаем с B2B и B2C заказчиками любого масштаба.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gal" id="gallery">
+  <div class="W">
+    <div class="anim sh2" style="margin-bottom:46px"><span class="lbl">Результаты работ</span><h2 class="ttl">Визуальные данные</h2><p class="sub">Примеры аэрофотосъёмки, 3D-моделей и топографических планов.</p></div>
+    <div class="gg">
+      <div class="gi W2 anim" data-d="1">
+        <img src="https://picsum.photos/seed/aerial-kz/1200/525" alt="Аэрофотосъёмка с БПЛА" loading="lazy" width="1200" height="525">
+        <div class="gov"><span class="gc">Аэрофотосъёмка территории с БПЛА</span></div>
+      </div>
+      <div class="gi anim" data-d="2"><img src="https://picsum.photos/seed/topo-survey/600/450" alt="Полевые геодезические работы" loading="lazy" width="600" height="450"><div class="gov"><span class="gc">Полевые геодезические работы</span></div></div>
+      <div class="gi anim" data-d="3"><img src="https://picsum.photos/seed/construction-geo/600/450" alt="Сопровождение стройки" loading="lazy" width="600" height="450"><div class="gov"><span class="gc">Геодезическое сопровождение стройки</span></div></div>
+      <div class="gi anim" data-d="4"><img src="https://picsum.photos/seed/3d-scan-kz/600/450" alt="3D сканирование" loading="lazy" width="600" height="450"><div class="gov"><span class="gc">3D сканирование — облако точек</span></div></div>
+      <div class="gi anim" data-d="5"><img src="https://picsum.photos/seed/drone-kz-field/600/450" alt="БПЛА мониторинг" loading="lazy" width="600" height="450"><div class="gov"><span class="gc">БПЛА-мониторинг объёмов</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="map" id="map">
+  <div class="W">
+    <div class="mi2">
+      <div class="mt2 anim L">
+        <span class="lbl">Покрытие</span>
+        <h2 class="ttl">Алматы<br>и весь Казахстан</h2>
+        <p>Штаб-квартира в Алматы. Выезжаем во все регионы страны — от Мангистауской до Восточно-Казахстанской области.</p>
+        <p>Для удалённых объектов — мобильные бригады с полным оборудованием и парком беспилотников.</p>
+        <div class="mh">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e7a44" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>г. Алматы + выезд по всему Казахстану</span>
+        </div>
+        <a href="https://wa.me/77714000503" class="btn bp" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Написать в WhatsApp
+        </a>
+      </div>
+      <div class="me anim R"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=76.6%2C43.1%2C77.2%2C43.4&amp;layer=mapnik&amp;marker=43.238949%2C76.889709" allowfullscreen loading="lazy" title="Карта Алматы"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="W">
+    <div class="ci2">
+      <div class="anim L">
+        <span class="lbl">Оставить заявку</span>
+        <h2 class="ttl">Готовы обсудить<br>ваш проект?</h2>
+        <p class="sub">Оставьте заявку — свяжемся в течение рабочего дня. Или напишите напрямую.</p>
+        <div class="clnk">
+          <a href="tel:+77714000503" class="cr">
+            <div class="cico cph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.13 8.7A16 16 0 0015.3 17.87l1.02-1.12a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 19z"/></svg></div>
+            +7 771 400 05 03
+          </a>
+          <a href="https://wa.me/77714000503" target="_blank" rel="noopener" class="cr sm">
+            <div class="cico cwp"><svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+            WhatsApp — быстрый ответ
+          </a>
+        </div>
+      </div>
+      <div class="cf anim R">
+        <h3>Оставить заявку</h3>
+        <form id="form" novalidate>
+          <div class="fr2">
+            <div class="fg"><label for="nm">Имя</label><input id="nm" type="text" placeholder="Иван Иванов" required autocomplete="name"></div>
+            <div class="fg"><label for="ph">Телефон</label><input id="ph" type="tel" placeholder="+7 (___) ___-__-__" required autocomplete="tel"></div>
+          </div>
+          <div class="fg"><label for="sv">Услуга</label>
+            <select id="sv">
+              <option value="" disabled selected>Выберите услугу</option>
+              <option>Топографическая съёмка</option><option>Геологические изыскания</option>
+              <option>Сопровождение строительства</option><option>Аэротопосъёмка</option>
+              <option>3D сканирование</option><option>Работы с БПЛА</option><option>Другое</option>
+            </select>
+          </div>
+          <div class="fg"><label for="ms">Описание</label><textarea id="ms" placeholder="Опишите объект и задачу..."></textarea></div>
+          <button type="submit" class="btn bp" style="width:100%;justify-content:center;">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="W">
+    <div class="fm">
+      <div>
+        <p class="fbr">ТОО «КазЖерГеодезия»</p>
+        <p class="fdc">Профессиональные геодезические и изыскательские услуги в Алматы и по всему Казахстану.<br><span style="font-size:.72rem;color:rgba(255,255,255,.28)">БИН 1804 4003 9738</span></p>
+        <address style="font-style:normal">
+          <a href="tel:+77714000503" class="fcc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.13 8.7A16 16 0 0015.3 17.87l1.02-1.12a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 19z"/></svg>+7 771 400 05 03</a>
+          <a href="mailto:kazzher@inbox.ru" class="fcc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>kazzher@inbox.ru</a>
+          <p class="fcc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>г. Алматы, Казахстан</p>
+        </address>
+      </div>
+      <nav><p class="fhd">Услуги</p><ul class="fl"><li><a href="#services">Топографическая съёмка</a></li><li><a href="#services">Геологические изыскания</a></li><li><a href="#services">Сопровождение строительства</a></li><li><a href="#services">Аэротопосъёмка</a></li><li><a href="#services">3D сканирование</a></li><li><a href="#services">Работы с БПЛА</a></li></ul></nav>
+      <nav><p class="fhd">Компания</p><ul class="fl"><li><a href="#about">О нас</a></li><li><a href="#gallery">Галерея работ</a></li><li><a href="#map">Зона покрытия</a></li><li><a href="#contact">Контакты</a></li><li><a href="#contact">Оставить заявку</a></li></ul></nav>
+    </div>
+    <div class="fbt"><span class="fcp">© 2026 ТОО «КазЖерГеодезия». Все права защищены.</span><span class="fcp">г. Алматы, Казахстан</span></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const tog = document.getElementById('tog');
+  const nl  = document.getElementById('nl');
+
+  window.addEventListener('scroll', () => nav.classList.toggle('sh', scrollY > 40), {passive:true});
+
+  tog.addEventListener('click', () => {
+    const o = nl.classList.toggle('open');
+    tog.setAttribute('aria-expanded', o);
+  });
+  nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nl.classList.remove('open'); tog.setAttribute('aria-expanded','false'); }));
+
+  // Scroll animations
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold:.13});
+  document.querySelectorAll('.anim').forEach(el => io.observe(el));
+
+  // Counter animation
+  function countUp(el, target, dur) {
+    const sfx = el.dataset.sfx || '';
+    const start = performance.now();
+    const run = now => {
+      const p = Math.min((now - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(e * target) + sfx;
+      if(p < 1) requestAnimationFrame(run);
+    };
+    requestAnimationFrame(run);
+  }
+
+  const statsObs = new IntersectionObserver(es => es.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(el => countUp(el, +el.dataset.count, 1800));
+      statsObs.unobserve(e.target);
+    }
+  }), {threshold:.6});
+  const st = document.getElementById('stats');
+  if(st) statsObs.observe(st);
+
+  // Form
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = e.target.querySelector('[type=submit]');
+    btn.textContent = '✓ Заявка отправлена!';
+    btn.style.cssText = 'background:#1e7a44;width:100%;justify-content:center;';
+    btn.disabled = true;
+    setTimeout(() => { e.target.reset(); btn.textContent = 'Отправить заявку'; btn.style.cssText = 'width:100%;justify-content:center;'; btn.disabled = false; }, 3500);
+  });
+</script>
+</body>
+</html>

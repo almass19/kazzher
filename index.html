@@ -29,6 +29,9 @@
     .bp{background:var(--o);color:var(--w)}.bp:hover{background:#c94e12;transform:translateY(-2px);box-shadow:0 6px 22px rgba(232,92,26,.32)}
     .bg2{background:transparent;color:var(--w);border-color:rgba(255,255,255,.4)}.bg2:hover{background:rgba(255,255,255,.1)}
     .bo{background:transparent;color:var(--g);border-color:var(--g)}.bo:hover{background:var(--g);color:var(--w)}
+    .hlist{display:grid;grid-template-columns:1fr 1fr;gap:7px 24px;list-style:none;margin-bottom:32px;animation:up .65s .24s ease both}
+    .hlist li{display:flex;align-items:center;gap:8px;font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.4}
+    .hlist li::before{content:'';width:5px;height:5px;background:var(--o);border-radius:50%;flex-shrink:0}
 
     @keyframes up{from{opacity:0;transform:translateY(55px)}to{opacity:1;transform:none}}
     @keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -184,8 +187,8 @@
     @media(max-width:768px){
       .nl{display:none}.ntog{display:flex}
       .nl.open{display:flex;flex-direction:column;position:absolute;top:64px;inset-inline:0;background:rgba(7,16,30,.98);padding:16px 22px;gap:13px}
-      /* kill horizontal transforms — they cause layout shift on mobile */
       .anim.L,.anim.R{transform:translateY(38px)}
+      .hlist{grid-template-columns:1fr}
       /* section padding */
       .svc,.about,.why,.gal,.map,.cta{padding:60px 0}
       .foot{padding:40px 0 20px}
@@ -230,7 +233,7 @@
   <div class="W">
     <nav class="ni">
       <a href="#" class="logo">
-        <div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+        <div class="lm"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 20l5.5-10L11 15l3-5 7 10H2z" fill="white" opacity=".85"/><path d="M15 3C13.3 3 12 4.3 12 6c0 2.5 3 5.5 3 5.5s3-3 3-5.5C18 4.3 16.7 3 15 3z" fill="white"/><circle cx="15" cy="6" r="1.3" fill="#1e7a44"/></svg></div>
         <div><span class="ln">КазЖерГеодезия</span><span class="ls">ТОО · Геодезические услуги</span></div>
       </a>
       <ul class="nl" id="nl">
@@ -256,7 +259,14 @@
         Алматы · Весь Казахстан
       </div>
       <h1 class="ht">Точные геодезические<br>данные для <em>вашего проекта</em></h1>
-      <p class="hd">Топографические съёмки, геология, аэрофотосъёмка БПЛА и 3D сканирование. Современное оборудование — точные результаты в сжатые сроки.</p>
+      <ul class="hlist">
+        <li>Топографическая съёмка</li>
+        <li>Геологические изыскания</li>
+        <li>Исполнительная съёмка</li>
+        <li>Аэрофотосъёмка</li>
+        <li>Разбивка в натуру</li>
+        <li>Ортофотопланы</li>
+      </ul>
       <div class="ha">
         <a href="#contact" class="btn bp">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -265,7 +275,7 @@
         <a href="#services" class="btn bg2">Наши услуги</a>
       </div>
       <div class="hst" id="stats">
-        <div><span class="snum" data-count="10" data-sfx="+">10+</span><span class="slbl">лет на рынке</span></div>
+        <div><span class="snum">2018</span><span class="slbl">год основания</span></div>
         <div><span class="snum" data-count="500" data-sfx="+">500+</span><span class="slbl">объектов сдано</span></div>
         <div><span class="snum" data-count="17">17</span><span class="slbl">регионов Казахстана</span></div>
         <div><span class="snum" data-count="100" data-sfx="%">100%</span><span class="slbl">точность данных</span></div>
@@ -277,53 +287,50 @@
 <div class="tick" aria-hidden="true">
   <div class="tt">
     <span class="ti">Топографическая съёмка<span class="td"></span></span>
+    <span class="ti">Исполнительная съёмка<span class="td"></span></span>
+    <span class="ti">Разбивка в натуру<span class="td"></span></span>
     <span class="ti">Геологические изыскания<span class="td"></span></span>
-    <span class="ti">Аэросъёмка БПЛА<span class="td"></span></span>
-    <span class="ti">3D сканирование<span class="td"></span></span>
-    <span class="ti">Сопровождение строительства<span class="td"></span></span>
+    <span class="ti">Аэрофотосъёмка<span class="td"></span></span>
+    <span class="ti">Ортофотопланы<span class="td"></span></span>
     <span class="ti">КазЖерГеодезия<span class="td"></span></span>
     <span class="ti">Топографическая съёмка<span class="td"></span></span>
+    <span class="ti">Исполнительная съёмка<span class="td"></span></span>
+    <span class="ti">Разбивка в натуру<span class="td"></span></span>
     <span class="ti">Геологические изыскания<span class="td"></span></span>
-    <span class="ti">Аэросъёмка БПЛА<span class="td"></span></span>
-    <span class="ti">3D сканирование<span class="td"></span></span>
-    <span class="ti">Сопровождение строительства<span class="td"></span></span>
+    <span class="ti">Аэрофотосъёмка<span class="td"></span></span>
+    <span class="ti">Ортофотопланы<span class="td"></span></span>
     <span class="ti">КазЖерГеодезия<span class="td"></span></span>
   </div>
 </div>
 
 <section class="svc" id="services">
   <div class="W">
-    <div class="sh2 anim"><span class="lbl">Что мы делаем</span><h2 class="ttl">Геодезические и изыскательские услуги</h2><p class="sub">Полный спектр инженерных изысканий — от топосъёмки до аэрофотосъёмки с БПЛА.</p></div>
+    <div class="sh2 anim"><span class="lbl">Что мы делаем</span><h2 class="ttl">Геодезические и изыскательские услуги</h2><p class="sub">Профессиональные изыскания для строительства, кадастра и проектирования — любой сложности и масштаба.</p></div>
     <div class="sg">
       <article class="sc anim" data-d="1">
-        <div class="sic ig"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></div>
+        <div class="sic ig"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l5-9 4 6 2.5-3.5L21 18H3z"/><path d="M3 18h18"/></svg></div>
         <h3 class="snm">Топографическая съёмка</h3>
-        <p class="sdc">Высокоточная съёмка местности с созданием топографических планов масштабов 1:500–1:10000. Работы любой сложности.</p>
+        <p class="sdc">Высокоточная съёмка местности масштабов 1:500–1:10000. Работы любой сложности — большие площадные объекты и линейные трассы.</p>
       </article>
       <article class="sc anim" data-d="2">
-        <div class="sic ib"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1560a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3 class="snm">Геологические изыскания</h3>
-        <p class="sdc">Инженерно-геологические изыскания, грунтовые исследования и гидрогеологические работы для проектирования фундаментов.</p>
+        <div class="sic ib"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1560a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3 class="snm">Исполнительная съёмка</h3>
+        <p class="sdc">Фиксация фактического положения построенных объектов для приёмки в эксплуатацию и ведения исполнительной документации.</p>
       </article>
       <article class="sc anim" data-d="3">
-        <div class="sic io"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e85c1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-8 8 8v10M10 20v-6h4v6"/></svg></div>
-        <h3 class="snm">Сопровождение строительства</h3>
-        <p class="sdc">Геодезический контроль на всех этапах строительства: разбивочные работы, исполнительная съёмка, мониторинг деформаций.</p>
+        <div class="sic io"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e85c1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3 class="snm">Разбивка, вынос отметок в натуру</h3>
+        <p class="sdc">Перенос проектных данных на местность: разбивка осей зданий, вынос отметок, разбивочные работы на всех этапах строительства.</p>
       </article>
       <article class="sc anim" data-d="4">
-        <div class="sic ib"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1560a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></div>
-        <h3 class="snm">Аэротопосъёмка</h3>
-        <p class="sdc">Аэрофотосъёмка с беспилотных аппаратов. Ортофотопланы и цифровые модели рельефа высокого разрешения.</p>
+        <div class="sic ib"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1560a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <h3 class="snm">Геологические изыскания</h3>
+        <p class="sdc">Инженерно-геологические изыскания для проектирования фундаментов. Буровые работы, лабораторные исследования грунтов, гидрогеологические работы, составление геологических отчётов.</p>
       </article>
       <article class="sc anim" data-d="5">
-        <div class="sic ig"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-        <h3 class="snm">3D сканирование</h3>
-        <p class="sdc">Наземное лазерное сканирование с созданием облаков точек и трёхмерных моделей. Точность до 1–2 мм.</p>
-      </article>
-      <article class="sc anim" data-d="6">
-        <div class="sic io"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e85c1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h3 class="snm">Работы с БПЛА</h3>
-        <p class="sdc">Инспекция объектов, мониторинг объёмов, тепловизионная и мультиспектральная съёмка дронами.</p>
+        <div class="sic ig"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-1.5 0-4 1-4 4 0 3 4 7 4 7s4-4 4-7c0-3-2.5-4-4-4z"/><circle cx="12" cy="6" r="1.5"/><path d="M3 20h18M6 20l1.5-5h9L18 20"/><path d="M8 15h8"/></svg></div>
+        <h3 class="snm">Аэрофотосъёмка</h3>
+        <p class="sdc">Аэрофотосъёмка с беспилотных летательных аппаратов. Создание ортофотопланов, цифровых моделей рельефа и поверхности высокого разрешения.</p>
       </article>
     </div>
   </div>
@@ -333,14 +340,14 @@
   <div class="W">
     <div class="ai">
       <div class="aw anim L">
-        <img src="https://picsum.photos/seed/kazgeo-field/800/600" alt="Специалисты КазЖерГеодезии на геодезической съёмке" class="aimg" loading="lazy" width="800" height="600">
-        <div class="abg"><span class="abn">10+</span><span class="abl2">лет опыта</span></div>
+        <img src="https://picsum.photos/seed/geodesy-kz-field/800/600" alt="Специалисты КазЖерГеодезии на геодезической съёмке" class="aimg" loading="lazy" width="800" height="600">
+        <div class="abg"><span class="abn">2018</span><span class="abl2">на рынке с этого года</span></div>
       </div>
       <div class="at anim R">
         <span class="lbl">О компании</span>
         <h2 class="ttl">ТОО «КазЖерГеодезия»</h2>
-        <p>Казахстанская компания, специализирующаяся на инженерных изысканиях и геодезических работах. Работаем с застройщиками, проектными организациями, государственными структурами и частными заказчиками.</p>
-        <p>Наша команда — сертифицированные геодезисты с опытом на крупных инфраструктурных объектах по всему Казахстану.</p>
+        <p>На рынке с 2018 года. Казахстанская компания, специализирующаяся на инженерных изысканиях и геодезических работах. Работаем с застройщиками, проектными организациями, государственными структурами и частными заказчиками.</p>
+        <p>Наша команда — сертифицированные геодезисты с опытом на крупных инфраструктурных и промышленных объектах по всему Казахстану.</p>
         <ul class="alist">
           <li><span class="dot"></span>Лицензия на геодезические и картографические работы</li>
           <li><span class="dot"></span>Современное оборудование Leica, Trimble и DJI</li>
@@ -377,7 +384,7 @@
 
 <section class="gal" id="gallery">
   <div class="W">
-    <div class="anim sh2" style="margin-bottom:46px"><span class="lbl">Результаты работ</span><h2 class="ttl">Визуальные данные</h2><p class="sub">Примеры аэрофотосъёмки, 3D-моделей и топографических планов.</p></div>
+    <div class="anim sh2" style="margin-bottom:46px"><span class="lbl">Результаты работ</span><h2 class="ttl">Фотоотчёты с объектов</h2><p class="sub">Материалы с реальных объектов — аэросъёмка, полевые работы, ортофотопланы.</p></div>
     <div class="gg">
       <div class="gi W2 anim" data-d="1">
         <img src="https://picsum.photos/seed/aerial-kz/1200/525" alt="Аэрофотосъёмка с БПЛА" loading="lazy" width="1200" height="525">
@@ -468,7 +475,7 @@
           <p class="fcc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>г. Алматы, Казахстан</p>
         </address>
       </div>
-      <nav><p class="fhd">Услуги</p><ul class="fl"><li><a href="#services">Топографическая съёмка</a></li><li><a href="#services">Геологические изыскания</a></li><li><a href="#services">Сопровождение строительства</a></li><li><a href="#services">Аэротопосъёмка</a></li><li><a href="#services">3D сканирование</a></li><li><a href="#services">Работы с БПЛА</a></li></ul></nav>
+      <nav><p class="fhd">Услуги</p><ul class="fl"><li><a href="#services">Топографическая съёмка</a></li><li><a href="#services">Исполнительная съёмка</a></li><li><a href="#services">Разбивка, вынос отметок</a></li><li><a href="#services">Геологические изыскания</a></li><li><a href="#services">Аэрофотосъёмка</a></li></ul></nav>
       <nav><p class="fhd">Компания</p><ul class="fl"><li><a href="#about">О нас</a></li><li><a href="#gallery">Галерея работ</a></li><li><a href="#map">Зона покрытия</a></li><li><a href="#contact">Контакты</a></li><li><a href="#contact">Оставить заявку</a></li></ul></nav>
     </div>
     <div class="fbt"><span class="fcp">© 2026 ТОО «КазЖерГеодезия». Все права защищены.</span><span class="fcp">г. Алматы, Казахстан</span></div>
